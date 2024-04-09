@@ -1,6 +1,6 @@
 {
   "name": "docx-templates-brandondr",
-  "version": "4.12.1-alpha",
+  "version": "4.12.1-alpha2",
   "description": "Template-based docx report creation",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
