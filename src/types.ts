@@ -127,6 +127,13 @@ export type UserOptions = {
    * (Default: 1,000,000)
    */
   maximumWalkingDepth?: number;
+
+  /**
+   * Allow nested ifs
+   * Warning: This may cause infinite loops with nested ifs in single p or tr tags.
+   * Avoid SHIFT+ENTER in Word to create new lines in the same p tag.
+   */
+  allowNestedIfs?: boolean;
 };
 
 export type CreateReportOptions = {
@@ -142,6 +149,7 @@ export type CreateReportOptions = {
   fixSmartQuotes: boolean;
   processLineBreaksAsNewText: boolean;
   maximumWalkingDepth?: number;
+  allowNestedIfs?: boolean;
 };
 
 export type SandBox = {
