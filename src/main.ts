@@ -171,6 +171,7 @@ async function createReport(
   const xmlOptions = {
     literalXmlDelimiter,
     indentXml: createOptions.indentXml,
+    allowNestedIfs: options.allowNestedIfs,
   };
 
   const { jsTemplate, mainDocument, zip, contentTypes } = await parseTemplate(
