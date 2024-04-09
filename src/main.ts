@@ -166,6 +166,7 @@ async function createReport(
         ? false
         : options.processLineBreaksAsNewText,
     maximumWalkingDepth: options.maximumWalkingDepth,
+    allowNestedIfs: options.allowNestedIfs,
   };
   const xmlOptions = { literalXmlDelimiter };
 
