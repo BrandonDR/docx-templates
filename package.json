@@ -5,7 +5,6 @@
   "main": "lib/index.js",
   "browser": "lib/browser.js",
   "types": "lib/index.d.ts",
-  "type": "module",
   "author": "Guillermo Grau Panea",
   "license": "MIT",
   "keywords": [
