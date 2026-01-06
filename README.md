@@ -4,7 +4,7 @@ Template-based docx report creation for both Node and the browser. ([See the blo
 
 ## Changes in this BrandonDR fork
 
-* Convert from yarn to pnpm
+* Convert from yarn to pnpm, minor package updates for passing `pnpm audit` and removal of unused `coveralls` package
 * Add `allowNestedIfs` option to allow nested ifs in the same p or tr tag
 
 [Upstream diff](https://github.com/guigrpa/docx-templates/compare/master...BrandonDR:docx-templates:master)
