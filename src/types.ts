@@ -134,6 +134,7 @@ export type UserOptions = {
    * Avoid SHIFT+ENTER in Word to create new lines in the same p tag.
    */
   allowNestedIfs?: boolean;
+
   /**
    * Whether to indent the generated XML to make it more human-readable.
    * Tip: Set this to false if you want to minimize the size of the generated docx file.
@@ -152,13 +153,6 @@ export type UserOptions = {
    * (Default: 1)
    */
   compressionLevel?: number;
-
-  /**
-   * Allow nested ifs
-   * Warning: This may cause infinite loops with nested ifs in single p or tr tags.
-   * Avoid SHIFT+ENTER in Word to create new lines in the same p tag.
-   */
-  allowNestedIfs?: boolean;
 };
 
 export type CreateReportOptions = {
@@ -178,7 +172,6 @@ export type CreateReportOptions = {
   indentXml: boolean;
   preserveSpace: boolean;
   compressionLevel: number;
-  allowNestedIfs?: boolean;
 };
 
 export type SandBox = {
@@ -229,6 +222,7 @@ export const ImageExtensions = [
   '.jpg',
   '.jpeg',
   '.svg',
+  '.webp',
 ] as const;
 type ImageExtension = (typeof ImageExtensions)[number];
 export type Image = {
