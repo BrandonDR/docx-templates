@@ -57,10 +57,10 @@ Contributions are welcome!
 $ npm install docx-templates
 ```
 
-...or using yarn:
+...or using pnpm:
 
 ```
-$ yarn add docx-templates
+$ pnpm add docx-templates
 ```
 
 
