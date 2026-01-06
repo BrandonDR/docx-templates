@@ -2,6 +2,12 @@
 
 Template-based docx report creation for both Node and the browser. ([See the blog post](http://guigrpa.github.io/2017/01/01/word-docs-the-relay-way/)).
 
+## Changes in this BrandonDR fork
+
+* Convert from yarn to pnpm
+* Add `allowNestedIfs` option to allow nested ifs in the same p or tr tag
+
+[Upstream diff](https://github.com/guigrpa/docx-templates/compare/master...BrandonDR:docx-templates:master)
 
 ## Why?
 
