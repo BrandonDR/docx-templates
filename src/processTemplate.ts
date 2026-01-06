@@ -293,6 +293,25 @@ export async function walkTemplate(
         const buffers = ctx.buffers[tag];
         fRemoveNode =
           buffers.text === '' && buffers.cmds !== '' && !buffers.fInsertedText;
+
+        // If the last generated output node is a table row, and it is set to be deleted,
+        // don't delete if it has exactly one nested row (i.e. within nested table)
+        if (tag === 'w:tr' && fRemoveNode) {
+          fRemoveNode =
+            nodeIn._children.filter(
+              child => !child._fTextNode && child._tag === 'w:tr'
+            ).length !== 1;
+        }
+
+        // If the last generated output node is a table column, and it is set to be deleted,
+        // don't delete if it has a table as a child
+        if (tag === 'w:tc' && fRemoveNode) {
+          fRemoveNode = !(
+            nodeOut._children.filter(
+              child => !child._fTextNode && child._tag === 'w:tbl'
+            ).length > 0
+          );
+        }
       }
       // Execute removal, if needed. The node will no longer be part of the output, but
       // the parent will be accessible from the child (so that we can still move up the tree)
@@ -596,8 +615,8 @@ const processCmd: CommandProcessor = async (
 ): Promise<undefined | string | Error> => {
   const cmd = getCommand(ctx.cmd, ctx.shorthands, ctx.options.fixSmartQuotes);
   ctx.cmd = ''; // flush the context
+  const { cmdName, cmdRest } = splitCommand(cmd);
   try {
-    const { cmdName, cmdRest } = splitCommand(cmd);
     if (cmdName !== 'CMD_NODE') logger.debug(`Processing cmd: ${cmd}`);
     // Seeking query?
     if (ctx.fSeekQuery) {
@@ -719,7 +738,7 @@ const processCmd: CommandProcessor = async (
   } catch (err) {
     if (!isError(err)) throw err;
     if (ctx.options.errorHandler != null) {
-      return ctx.options.errorHandler(err);
+      return ctx.options.errorHandler(err, cmdRest);
     }
     return err;
   }
@@ -985,7 +1004,7 @@ const processImage = (ctx: Context, imagePars: ImagePars) => {
 
   let imgRelId = imageToContext(ctx, getImageData(imagePars));
   const id = String(ctx.imageAndShapeIdIncrement);
-  const alt = imagePars.alt || 'desc';
+  const alt = imagePars.alt || '';
   const node = newNonTextNode;
 
   const extNodes = [];

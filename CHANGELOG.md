@@ -1,3 +1,20 @@
+## 4.15.0 (2025-12-03)
+* [#432](https://github.com/guigrpa/docx-templates/pull/432): add `indentXml`, `preserveSpace` and `compressionLevel` options to let users trade readability for smaller file size when generating reports.
+* [#426](https://github.com/guigrpa/docx-templates/pull/426): allow `IMAGE` commands to emit empty Alt Text values instead of forcing the placeholder `"desc"`.
+* [#368](https://github.com/guigrpa/docx-templates/pull/368): pass the evaluated command code to `errorHandler` callbacks so they can inspect what failed.
+* Fix a minor typo in the README.
+
+## 4.14.1 (2025-03-10)
+* Issue [#405](https://github.com/guigrpa/docx-templates/issues/405): fix "The requested module 'docx-templates' does not provide an export named 'default'" error by reverting "Add `"type": "module"` to `package.json`.". Rename Rollup config file to `.mjs` extension instead, which fixes the original Rollup problem.
+
+## 4.14.0 (2025-03-09)
+* Add UnterminatedForLoopError to README by @davidjb in https://github.com/guigrpa/docx-templates/pull/372
+* Fix: corrupted docx issue caused by duplicate extensions in ContentType.xml with different casing by @ACHP in https://github.com/guigrpa/docx-templates/pull/400
+* Feat: improve table row and column deletion logic by @PleBea in https://github.com/guigrpa/docx-templates/pull/402
+* Use `Buffer` instead of string concatenation for huge XML support by @AlexC-ux in https://github.com/guigrpa/docx-templates/pull/386
+* Add `"type": "module"` to `package.json`.
+* Various Dependabot dependency updates.
+
 ## 4.13.0 (2024-04-17)
 - [MR 360](https://github.com/guigrpa/docx-templates/pull/360) Added `maximumWalkingDepth` option for supporting large documents.
 - Updated dependencies.

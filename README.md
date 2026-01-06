@@ -131,7 +131,7 @@ const report = await createReport({
    * If you set fixSmartQuotes to 'true', these smart quotes will automatically get replaced with straight quotes (') before command evaluation.
    * Defaults to false.
    */
-  fixSmartQuotes: false;
+  fixSmartQuotes: false,
 
   /**
    * Maximum loop iterations allowed when walking through the template.
@@ -140,7 +140,27 @@ const report = await createReport({
    * This may be useful if you implement a process timeout instead.
    * (Default: 1,000,000)
    */
-  maximumWalkingDepth: 1_000_000;
+  maximumWalkingDepth: 1_000_000,
+  /**
+   * Whether to indent the generated XML to make it more human-readable.
+   * Tip: Set this to true if you want to inspect the generated XML or if you want to use a diff tool to compare the generated docx file with another one.
+   * Leaving this option to false will result in a smaller file size.
+   * (Default: false)
+   */
+  indentXml?: boolean,
+  /**
+   * Whether to preserve whitespace in the generated XML.*
+   * Tip: Set this to true if your template contains significant whitespace that you want to preserve in the output document.
+   * Leaving this option to false will result in a smaller file size.
+   * (Default: false)
+   */
+  preserveSpace?: boolean,
+  /**
+   * Compression level for the generated docx file.
+   * Integer between 0 (no compression, fastest) and 9 (maximum compression, slowest).
+   * (Default: 1)
+   */
+  compressionLevel?: number,
 });
 ```
 
@@ -449,8 +469,8 @@ Takes the HTML resulting from evaluating a JavaScript snippet and converts it to
 +++HTML `
 <meta charset="UTF-8">
 <body>
-  <h1>${$film.title}</h1>
-  <h3>${$film.releaseDate.slice(0, 4)}</h3>
+  <h1>${film.title}</h1>
+  <h3>${film.releaseDate.slice(0, 4)}</h3>
   <p>
     <strong style="color: red;">This paragraph should be red and strong</strong>
   </p>

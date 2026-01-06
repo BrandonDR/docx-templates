@@ -134,6 +134,24 @@ export type UserOptions = {
    * Avoid SHIFT+ENTER in Word to create new lines in the same p tag.
    */
   allowNestedIfs?: boolean;
+  /**
+   * Whether to indent the generated XML to make it more human-readable.
+   * Tip: Set this to false if you want to minimize the size of the generated docx file.
+   * (Default: true)
+   */
+  indentXml?: boolean;
+  /**
+   * Whether to preserve whitespace in the generated XML.*
+   * Tip: Set this to false if you want to minimize the size of the generated docx file.
+   * (Default: true)
+   */
+  preserveSpace?: boolean;
+  /**
+   * Compression level for the generated docx file.
+   * Integer between 0 (no compression, fastest) and 9 (maximum compression, slowest).
+   * (Default: 1)
+   */
+  compressionLevel?: number;
 };
 
 export type CreateReportOptions = {
@@ -150,6 +168,9 @@ export type CreateReportOptions = {
   processLineBreaksAsNewText: boolean;
   maximumWalkingDepth?: number;
   allowNestedIfs?: boolean;
+  indentXml: boolean;
+  preserveSpace: boolean;
+  compressionLevel: number;
 };
 
 export type SandBox = {
@@ -188,7 +209,7 @@ export type Context = {
   jsSandbox?: SandBox;
   textRunPropsNode?: NonTextNode;
 
-  // To verfiy we don't have a nested if within the same p or tr tag
+  // To verify we don't have a nested if within the same p or tr tag
   pIfCheckMap: Map<Node, string>;
   trIfCheckMap: Map<Node, string>;
 };
